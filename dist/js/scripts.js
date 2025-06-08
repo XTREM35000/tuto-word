@@ -1,7 +1,7 @@
 /*!
-* Start Bootstrap - Clean Blog v6.0.9 (https://startbootstrap.com/theme/clean-blog)
-* Copyright 2013-2025 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-clean-blog/blob/master/LICENSE)
+* Start Bootstrap - GogoSoft v6.0.9 (undefined)
+* Copyright 2013-2025 undefined
+* Licensed under undefined (https://github.com/StartBootstrap/Formation-Office/blob/master/LICENSE)
 */
 window.addEventListener('DOMContentLoaded', () => {
     let scrollPos = 0;
