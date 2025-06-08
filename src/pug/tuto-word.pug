@@ -10,12 +10,16 @@ block content
         article
             h1#tutoriel-word= title
 
-            section#introduction
+            section#introduction.chapter-section
                 h2 Introduction
                 p Microsoft Word est l'un des logiciels de traitement de texte les plus utilisés au monde. Ce tutoriel vous guidera à travers les fonctionnalités essentielles pour créer des documents professionnels.
                 img(src="/assets/img/word/introduction.png" alt="Interface de Microsoft Word")
+                .text-center.mt-4
+                    button.btn.btn-primary.download-pdf(data-chapter="introduction")
+                        i.fas.fa-file-pdf.me-2
+                        | Télécharger le PDF
 
-            section#chapitre-1
+            section#chapitre-1.chapter-section
                 h2 Chapitre 1 : Premiers pas avec Word
 
                 h3#lancer-word 1.1 Lancer Word
@@ -25,6 +29,10 @@ block content
                     li Utiliser le raccourci sur votre bureau
                     li Ouvrir un document Word existant
                 img(src="/assets/img/word/lancer-word.png" alt="Capture : Comment lancer Microsoft Word")
+                .text-center.mt-4
+                    button.btn.btn-primary.download-pdf(data-chapter="chapitre-1")
+                        i.fas.fa-file-pdf.me-2
+                        | Télécharger le PDF
 
                 h3#interface-word 1.2 L'interface de Word
                 p L'interface de Word se compose de plusieurs éléments :
@@ -35,7 +43,7 @@ block content
                     li La Barre d'état
                 img(src="/assets/img/word/interface-word.png" alt="Capture : L'interface de Microsoft Word annotée")
 
-            section#chapitre-2
+            section#chapitre-2.chapter-section
                 h2 Chapitre 2 : Découverte de l'Interface
 
                 h3#zones-ecran 2.1 Les Principales Zones de l'Écran
@@ -54,6 +62,10 @@ block content
                         strong Barre d'état :
                         | Affiche les informations importantes (numéro de page, nombre de mots)
                 img(src="/assets/img/word/zones-ecran.png" alt="Capture : Les différentes zones de l'écran Word")
+                .text-center.mt-4
+                    button.btn.btn-primary.download-pdf(data-chapter="chapitre-2")
+                        i.fas.fa-file-pdf.me-2
+                        | Télécharger le PDF
 
                 h3#personnaliser-affichage 2.2 Personnaliser l'Affichage
                 p Pour adapter l'interface à vos besoins :
@@ -63,7 +75,7 @@ block content
                     li Ajustez la disposition des fenêtres selon vos préférences
                 img(src="/assets/img/word/personnaliser-affichage.png" alt="Capture : Options de personnalisation de l'affichage")
 
-            section#chapitre-3
+            section#chapitre-3.chapter-section
                 h2 Chapitre 3 : Saisie et Mise en Forme du Texte
 
                 h3#ecrire-corriger 3.1 Écrire et Corriger du Texte
@@ -75,6 +87,10 @@ block content
                     li Double-cliquez pour sélectionner un mot
                     li Triple-cliquez pour sélectionner un paragraphe
                 img(src="/assets/img/word/saisie-texte.png" alt="Capture : Saisie et correction de texte")
+                .text-center.mt-4
+                    button.btn.btn-primary.download-pdf(data-chapter="chapitre-3")
+                        i.fas.fa-file-pdf.me-2
+                        | Télécharger le PDF
 
                 h3#mise-en-forme 3.2 Modifier la Police, la Taille, la Couleur
                 p Pour mettre en forme votre texte :
@@ -88,7 +104,7 @@ block content
                             li Couleur du texte
                 img(src="/assets/img/word/mise-en-forme.png" alt="Capture : Options de mise en forme du texte")
 
-            section#chapitre-4
+            section#chapitre-4.chapter-section
                 h2 Chapitre 4 : Gestion des Paragraphes et des Listes
 
                 h3#alignement 4.1 Aligner et Espacer un Paragraphe
@@ -103,6 +119,10 @@ block content
                     li Ajustez l'interligne via le menu Paragraphe
                     li Définissez les retraits et espacements
                 img(src="/assets/img/word/alignement.png" alt="Capture : Options d'alignement des paragraphes")
+                .text-center.mt-4
+                    button.btn.btn-primary.download-pdf(data-chapter="chapitre-4")
+                        i.fas.fa-file-pdf.me-2
+                        | Télécharger le PDF
 
                 h3#listes 4.2 Créer des Listes à Puces ou Numérotées
                 p Pour organiser votre information :
@@ -112,7 +132,7 @@ block content
                     li Personnalisez le style des puces ou la numérotation
                 img(src="/assets/img/word/listes.png" alt="Capture : Création de listes")
 
-            section#chapitre-5
+            section#chapitre-5.chapter-section
                 h2 Chapitre 5 : Insertion d'Éléments
 
                 h3#images 5.1 Ajouter une Image
@@ -123,6 +143,10 @@ block content
                     li Ajustez la taille et la position de l'image
                     li Utilisez les outils de mise en forme d'image
                 img(src="/assets/img/word/insertion-image.png" alt="Capture : Insertion d'images")
+                .text-center.mt-4
+                    button.btn.btn-primary.download-pdf(data-chapter="chapitre-5")
+                        i.fas.fa-file-pdf.me-2
+                        | Télécharger le PDF
 
                 h3#tableaux 5.2 Créer un Tableau
                 p Pour organiser vos données :
@@ -133,7 +157,7 @@ block content
                     li Ajoutez ou supprimez des cellules selon vos besoins
                 img(src="/assets/img/word/tableaux.png" alt="Capture : Création de tableaux")
 
-            section#chapitre-6
+            section#chapitre-6.chapter-section
                 h2 Chapitre 6 : Mise en Page et Impression
 
                 h3#mise-en-page 6.1 Modifier les Marges et l'Orientation
@@ -144,6 +168,10 @@ block content
                     li Ajustez la taille du papier
                     li Configurez les en-têtes et pieds de page
                 img(src="/assets/img/word/mise-en-page.png" alt="Capture : Options de mise en page")
+                .text-center.mt-4
+                    button.btn.btn-primary.download-pdf(data-chapter="chapitre-6")
+                        i.fas.fa-file-pdf.me-2
+                        | Télécharger le PDF
 
                 h3#impression 6.2 Imprimer un Document
                 p Pour imprimer votre travail :
@@ -154,7 +182,7 @@ block content
                     li Cliquez sur le bouton "Imprimer"
                 img(src="/assets/img/word/impression.png" alt="Capture : Options d'impression")
 
-            section#chapitre-7
+            section#chapitre-7.chapter-section
                 h2 Chapitre 7 : Enregistrement et Partage
 
                 h3#enregistrement 7.1 Sauvegarder son Document
@@ -165,6 +193,10 @@ block content
                     li Sélectionnez un emplacement et un nom de fichier
                     li Choisissez le format de fichier (.docx par défaut)
                 img(src="/assets/img/word/enregistrement.png" alt="Capture : Options d'enregistrement")
+                .text-center.mt-4
+                    button.btn.btn-primary.download-pdf(data-chapter="chapitre-7")
+                        i.fas.fa-file-pdf.me-2
+                        | Télécharger le PDF
 
                 h3#export-pdf 7.2 Exporter en PDF
                 p Pour partager vos documents :
@@ -175,7 +207,7 @@ block content
                     li Cliquez sur "Publier"
                 img(src="/assets/img/word/export-pdf.png" alt="Capture : Exportation en PDF")
 
-            section#chapitre-8
+            section#chapitre-8.chapter-section
                 h2 Chapitre 8 : Conclusion et Exercices
 
                 h3#recap 8.1 Récapitulatif des Fonctions Clés
@@ -186,6 +218,10 @@ block content
                     li Insérer des images et des tableaux
                     li Organiser l'information efficacement
                     li Partager vos documents facilement
+                .text-center.mt-4
+                    button.btn.btn-primary.download-pdf(data-chapter="chapitre-8")
+                        i.fas.fa-file-pdf.me-2
+                        | Télécharger le PDF
 
                 h3#exercices 8.2 Exercices Pratiques
                 p Pour vous entraîner, essayez de :

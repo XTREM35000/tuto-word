@@ -36,7 +36,8 @@
         "url": "https://github.com/StartBootstrap/startbootstrap-clean-blog.git"
     },
     "dependencies": {
-        "bootstrap": "5.2.3"
+        "bootstrap": "5.2.3",
+        "html2pdf.js": "^0.10.3"
     },
     "devDependencies": {
         "autoprefixer": "10.4.14",
