@@ -1,14 +1,14 @@
 doctype html
-html(lang='en')
+html(lang='fr')
 
     head
 
         meta(charset='utf-8')
         meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
-        meta(name='description', content='')
-        meta(name='author', content='')
+        meta(name='description', content='Contactez Thierry Gogo pour vos projets de développement web et rédaction technique')
+        meta(name='author', content='Thierry Gogo')
 
-        title Thierry Gogo- Start Bootstrap Theme
+        title Contact - Thierry Gogo | Développement Web & Rédaction Technique
 
         link(rel='icon', type='image/x-icon', href='assets/favicon.ico')
 
@@ -24,100 +24,105 @@ html(lang='en')
                 .row.gx-4.gx-lg-5.justify-content-center
                     .col-md-10.col-lg-8.col-xl-7
                         .page-heading
-                            h1 Contact Me
-                            span.subheading Have questions? I have answers.
+                            h1 Contactez-moi
+                            span.subheading Discutons de votre projet
 
         // Main Content
         main.mb-4
             .container.px-4.px-lg-5
                 .row.gx-4.gx-lg-5.justify-content-center
                     .col-md-10.col-lg-8.col-xl-7
-                        p
-                            | Want to get in touch? Fill out the form below to send me a message and I will get back to you as soon as possible!
+                        .row.mb-5
+                            .col-md-6
+                                h3.h4.mb-3
+                                    i.fas.fa-envelope.text-primary.me-2
+                                    | Email
+                                p.mb-0
+                                    a(href='mailto:contact@thierrygogo.com') contact@thierrygogo.com
+                            .col-md-6
+                                h3.h4.mb-3
+                                    i.fas.fa-phone.text-primary.me-2
+                                    | Téléphone
+                                p.mb-0 +33 (0)6 XX XX XX XX
 
-                        .my-5
+                        hr.my-5
 
-                            // * * * * * * * * * * * * * * *
-                            // * * SB Forms Contact Form * *
-                            // * * * * * * * * * * * * * * *
+                        h2.text-center.mb-4 Formulaire de Contact
+                        p.text-center.mb-5
+                            | Pour toute demande de devis ou information complémentaire, n'hésitez pas à me contacter via le formulaire ci-dessous.
 
-                            // This form is pre-integrated with SB Forms.
-                            // To make this form functional, sign up at
-                            // https://startbootstrap.com/solution/contact-forms
-                            // to get an API token!
+                        form#contactForm.needs-validation(data-sb-form-api-token='API_TOKEN', novalidate)
+                            .form-floating.mb-3
+                                input#name.form-control(
+                                    type='text',
+                                    placeholder='Votre nom',
+                                    data-sb-validations='required'
+                                )
+                                label(for='name') Nom complet
+                                .invalid-feedback(data-sb-feedback='name:required')
+                                    | Veuillez indiquer votre nom.
 
-                            form#contactForm(data-sb-form-api-token='API_TOKEN')
-                                .form-floating
-                                    input#name.form-control(
-                                        type='text',
-                                        placeholder='Enter your name...',
-                                        data-sb-validations='required'
-                                    )
-                                    label(for='name') Name
-                                    .invalid-feedback(data-sb-feedback='name:required')
-                                        | A name is required.
-                                .form-floating
-                                    input#email.form-control(
-                                        type='email',
-                                        placeholder='Enter your email...',
-                                        data-sb-validations='required,email'
-                                    )
-                                    label(for='email') Email address
-                                    .invalid-feedback(data-sb-feedback='email:required')
-                                        | An email is required.
-                                    .invalid-feedback(data-sb-feedback='email:email')
-                                        | Email is not valid.
-                                .form-floating
-                                    input#phone.form-control(
-                                        type='tel',
-                                        placeholder='Enter your phone number...',
-                                        data-sb-validations='required'
-                                    )
-                                    label(for='phone') Phone Number
-                                    .invalid-feedback(data-sb-feedback='phone:required')
-                                        | A phone number is required.
-                                .form-floating
-                                    textarea#message.form-control(
-                                        placeholder='Enter your message here...',
-                                        style='height: 12rem;',
-                                        data-sb-validations='required'
-                                    )
-                                    label(for='message') Message
-                                    .invalid-feedback(data-sb-feedback='message:required')
-                                        | A message is required.
+                            .form-floating.mb-3
+                                input#email.form-control(
+                                    type='email',
+                                    placeholder='Votre email',
+                                    data-sb-validations='required,email'
+                                )
+                                label(for='email') Adresse email
+                                .invalid-feedback(data-sb-feedback='email:required')
+                                    | Veuillez indiquer votre email.
+                                .invalid-feedback(data-sb-feedback='email:email')
+                                    | L'adresse email n'est pas valide.
 
-                                br
+                            .form-floating.mb-3
+                                input#phone.form-control(
+                                    type='tel',
+                                    placeholder='Votre téléphone',
+                                    data-sb-validations='required'
+                                )
+                                label(for='phone') Numéro de téléphone
+                                .invalid-feedback(data-sb-feedback='phone:required')
+                                    | Veuillez indiquer votre numéro de téléphone.
 
-                                // Submit success message
-                                //
-                                // This is what your users will see when the form
-                                // has successfully submitted
+                            .form-floating.mb-3
+                                select#subject.form-control(
+                                    data-sb-validations='required'
+                                )
+                                    option(value='') Sélectionnez...
+                                    option(value='dev-web') Développement Web
+                                    option(value='redaction') Rédaction Technique
+                                    option(value='autre') Autre
+                                label(for='subject') Type de projet
+                                .invalid-feedback(data-sb-feedback='subject:required')
+                                    | Veuillez sélectionner le type de projet.
 
-                                #submitSuccessMessage.d-none
-                                    .text-center.mb-3
-                                        .fw-bolder Form submission successful!
-                                        | To activate this form, sign up at
-                                        br
-                                        a(href='https://startbootstrap.com/solution/contact-forms') https://startbootstrap.com/solution/contact-forms
+                            .form-floating.mb-3
+                                textarea#message.form-control(
+                                    placeholder='Votre message',
+                                    style='height: 12rem;',
+                                    data-sb-validations='required'
+                                )
+                                label(for='message') Message
+                                .invalid-feedback(data-sb-feedback='message:required')
+                                    | Veuillez écrire votre message.
 
-                                // Submit error message
-                                //
-                                // This is what your users will see when there is
-                                // an error submitting the form
+                            // Submit success message
+                            #submitSuccessMessage.d-none
+                                .text-center.mb-3.mt-4
+                                    .fw-bolder Message envoyé avec succès !
+                                    | Je vous répondrai dans les plus brefs délais.
 
-                                #submitErrorMessage.d-none
-                                    .text-center.text-danger.mb-3 Error sending message!
+                            // Submit error message
+                            #submitErrorMessage.d-none
+                                .text-center.text-danger.mb-3 Erreur lors de l'envoi du message.
 
-                                // Submit Button
-                                button#submitButton.btn.btn-primary.text-uppercase.disabled(type='submit') Send
+                            .d-grid.gap-2.mt-4
+                                button#submitButton.btn.btn-primary.btn-lg(type='submit')
+                                    i.fas.fa-paper-plane.me-2
+                                    | Envoyer le message
 
         include includes/footer.pug
 
         include includes/scripts.pug
-
-        // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-        // * *                               SB Forms JS                               * *
-        // * * Activate your form at https://startbootstrap.com/solution/contact-forms * *
-        // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
         script(src='https://cdn.startbootstrap.com/sb-forms-latest.js')
