@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*!
 * Start Bootstrap - Clean Blog v6.0.9 (https://startbootstrap.com/theme/clean-blog)
-* Copyright 2013-2023 Start Bootstrap
+* Copyright 2013-2025 Start Bootstrap
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-clean-blog/blob/master/LICENSE)
 */
 /*!
@@ -2042,8 +2042,7 @@ progress {
 .form-control::file-selector-button {
   padding: 0.375rem 0.75rem;
   margin: -0.375rem -0.75rem;
-  -webkit-margin-end: 0.75rem;
-          margin-inline-end: 0.75rem;
+  margin-inline-end: 0.75rem;
   color: #212529;
   background-color: #e9ecef;
   pointer-events: none;
@@ -2090,8 +2089,7 @@ progress {
 .form-control-sm::file-selector-button {
   padding: 0.25rem 0.5rem;
   margin: -0.25rem -0.5rem;
-  -webkit-margin-end: 0.5rem;
-          margin-inline-end: 0.5rem;
+  margin-inline-end: 0.5rem;
 }
 
 .form-control-lg {
@@ -2102,8 +2100,7 @@ progress {
 .form-control-lg::file-selector-button {
   padding: 0.5rem 1rem;
   margin: -0.5rem -1rem;
-  -webkit-margin-end: 1rem;
-          margin-inline-end: 1rem;
+  margin-inline-end: 1rem;
 }
 
 textarea.form-control {
@@ -5530,8 +5527,7 @@ textarea.form-control-lg {
   float: left;
   width: 100%;
   margin-right: -100%;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   transition: transform 0.6s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -10591,24 +10587,49 @@ blockquote {
   left: 0;
   right: 0;
   z-index: 1030;
-  border-bottom: 1px solid #dee2e6;
-  background-color: #fff;
+  border-bottom: 1px solid #e9ecef;
+  background-color: white;
   font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 #mainNav .navbar-brand {
   font-weight: 800;
+  color: #343a40;
+}
+#mainNav .navbar-brand img.navbar-logo {
+  transition: transform 0.3s ease;
+}
+#mainNav .navbar-brand:hover img.navbar-logo {
+  transform: scale(1.1);
 }
 #mainNav .navbar-toggler {
   font-size: 0.75rem;
   font-weight: 800;
   padding: 0.75rem;
   text-transform: uppercase;
+  color: #343a40;
 }
 #mainNav .navbar-nav > li.nav-item > a.nav-link {
   font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.0625em;
   text-transform: uppercase;
+}
+#mainNav .navbar-nav > li.nav-item > a.nav-link:hover {
+  color: #0085A1;
+}
+#mainNav .dropdown-menu {
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+#mainNav .dropdown-menu .dropdown-item {
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.75rem 1.25rem;
+}
+#mainNav .dropdown-menu .dropdown-item:hover {
+  background-color: #f8f9fa;
+  color: #0085A1;
 }
 @media (min-width: 992px) {
   #mainNav {
@@ -10633,7 +10654,6 @@ blockquote {
     transition: background-color 0.2s;
     /* Force Hardware Acceleration in WebKit */
     transform: translate3d(0, 0, 0);
-    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
   }
   #mainNav.is-fixed {
@@ -10662,6 +10682,91 @@ blockquote {
   }
 }
 
+.tutorial-card {
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border: none;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 100%;
+}
+.tutorial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+.tutorial-card .card-img-top {
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.tutorial-card .card-body {
+  padding: 1.5rem;
+}
+.tutorial-card .card-title {
+  color: #0085A1;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.tutorial-card .card-text {
+  color: #6c757d;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.tutorial-card .btn-tutorial {
+  background-color: #2b579a;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+.tutorial-card .btn-tutorial:hover {
+  background-color: #204072;
+}
+
+.freelance-section {
+  background-color: #f8f9fa;
+  padding: 4rem 0;
+  margin: 3rem 0;
+}
+.freelance-section .profile-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-bottom: 2rem;
+  border: 4px solid white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+.freelance-section .profile-img:hover {
+  transform: scale(1.05);
+}
+.freelance-section .skills .badge {
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  margin: 0.25rem;
+  border-radius: 2rem;
+  background-color: #2b579a;
+  transition: transform 0.2s ease;
+}
+.freelance-section .skills .badge:hover {
+  transform: translateY(-2px);
+}
+.freelance-section .social-links {
+  margin-top: 1.5rem;
+}
+.freelance-section .social-links a {
+  color: #6c757d;
+  font-size: 1.5rem;
+  margin: 0 0.5rem;
+  transition: all 0.2s ease;
+}
+.freelance-section .social-links a:hover {
+  color: #2b579a;
+  transform: translateY(-2px);
+}
+
 footer {
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -10670,12 +10775,12 @@ footer {
 header.masthead {
   position: relative;
   margin-bottom: 3rem;
-  padding-top: calc(8rem + 57px);
-  padding-bottom: 8rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
   background: no-repeat center center;
   background-color: #6c757d;
-  background-size: cover;
   background-attachment: scroll;
+  background-size: cover;
 }
 header.masthead:before {
   content: "";
@@ -10684,31 +10789,35 @@ header.masthead:before {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #212529;
-  opacity: 0.5;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 header.masthead .page-heading,
 header.masthead .post-heading,
 header.masthead .site-heading {
   color: #fff;
 }
-header.masthead .page-heading,
-header.masthead .site-heading {
+header.masthead .page-heading {
   text-align: center;
+  padding: 2rem 0;
 }
-header.masthead .page-heading h1, header.masthead .page-heading .h1,
-header.masthead .site-heading h1,
-header.masthead .site-heading .h1 {
-  font-size: 3rem;
+header.masthead .page-heading h1, header.masthead .page-heading .h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-header.masthead .page-heading .subheading,
-header.masthead .site-heading .subheading {
-  font-size: 1.5rem;
-  font-weight: 300;
+header.masthead .page-heading .subheading {
+  font-size: 1.3rem;
+  font-weight: 400;
   line-height: 1.1;
   display: block;
-  margin-top: 0.625rem;
-  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 header.masthead .post-heading h1, header.masthead .post-heading .h1 {
   font-size: 2.25rem;
@@ -10735,13 +10844,14 @@ header.masthead .post-heading .meta a {
 }
 @media (min-width: 992px) {
   header.masthead {
-    padding-top: 12.5rem;
-    padding-bottom: 12.5rem;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
   }
-  header.masthead .page-heading h1, header.masthead .page-heading .h1,
-  header.masthead .site-heading h1,
-  header.masthead .site-heading .h1 {
-    font-size: 5rem;
+  header.masthead .page-heading h1, header.masthead .page-heading .h1 {
+    font-size: 3rem;
+  }
+  header.masthead .page-heading .subheading {
+    font-size: 1.5rem;
   }
   header.masthead .post-heading h1, header.masthead .post-heading .h1 {
     font-size: 3.5rem;
@@ -10795,4 +10905,32 @@ header.masthead .post-heading .meta a {
   .post-preview > a > .post-title {
     font-size: 2.25rem;
   }
+}
+
+.tutorial-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+.tutorial-content img {
+  border: 1px solid #eee;
+  margin: 1rem 0;
+  max-width: 100%;
+  height: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.tutorial-content h2, .tutorial-content .h2 {
+  color: #2b579a;
+  margin-top: 3rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(43, 87, 154, 0.2);
+}
+.tutorial-content h3, .tutorial-content .h3 {
+  color: #204072;
+  margin-top: 2rem;
+}
+.tutorial-content .tutorial-nav {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
 }
