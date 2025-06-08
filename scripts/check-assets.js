@@ -3,42 +3,75 @@ const path = require('path');
 
 // Configuration
 const publicDir = 'public';
-const requiredDirs = [
-    'assets/img/word',
-    'assets/img/excel',
-    'assets/img/ppoint',
-    'assets/img/profile',
-    'assets/img/projets',
-    'assets/img/bg',
-    'assets/img/logo',
-    'assets/img/clients'
-];
+
+// Define required and optional directories
+const assetConfig = {
+    required: [
+        'assets/img/word',
+        'assets/img/profile',
+        'assets/img/bg'
+    ],
+    optional: [
+        'assets/img/excel',
+        'assets/img/ppoint',
+        'assets/img/projets',
+        'assets/img/logo',
+        'assets/img/clients'
+    ]
+};
 
 // Check if directory exists
-function checkDirectory(dir) {
+function checkDirectory(dir, isRequired = true) {
     const fullPath = path.join(publicDir, dir);
     if (!fs.existsSync(fullPath)) {
-        console.error(`❌ Directory missing: ${dir}`);
-        return false;
+        if (isRequired) {
+            console.error(`❌ Required directory missing: ${dir}`);
+            return false;
+        } else {
+            console.warn(`⚠️ Optional directory missing: ${dir}`);
+            return true;
+        }
     }
     console.log(`✅ Directory found: ${dir}`);
     return true;
 }
 
 // Check if directory has files
-function checkDirectoryHasFiles(dir) {
+function checkDirectoryHasFiles(dir, isRequired = true) {
     const fullPath = path.join(publicDir, dir);
-    const files = fs.readdirSync(fullPath);
+    if (!fs.existsSync(fullPath)) return true; // Skip if directory doesn't exist
+
+    const files = fs.readdirSync(fullPath).filter(file => {
+        const filePath = path.join(fullPath, file);
+        return fs.statSync(filePath).isFile();
+    });
+
     if (files.length === 0) {
-        console.error(`❌ Directory is empty: ${dir}`);
-        return false;
+        if (isRequired) {
+            console.error(`❌ Required directory is empty: ${dir}`);
+            return false;
+        } else {
+            console.warn(`⚠️ Optional directory is empty: ${dir}`);
+            return true;
+        }
     }
     console.log(`✅ Directory has ${files.length} files: ${dir}`);
     return true;
 }
 
+// Create placeholder for empty required directories
+function createPlaceholder(dir) {
+    const fullPath = path.join(publicDir, dir);
+    if (!fs.existsSync(fullPath)) {
+        fs.mkdirSync(fullPath, { recursive: true });
+    }
+    const placeholderPath = path.join(fullPath, 'placeholder.txt');
+    fs.writeFileSync(placeholderPath, `Placeholder for ${dir}\nCreated: ${new Date().toISOString()}`);
+    console.log(`✅ Created placeholder in: ${dir}`);
+}
+
 // Main check
-console.log('Checking required assets...');
+console.log('\nChecking assets...\n');
 let hasErrors = false;
 
 // Check public directory
@@ -47,20 +80,27 @@ if (!fs.existsSync(publicDir)) {
     process.exit(1);
 }
 
-// Check each required directory
-requiredDirs.forEach(dir => {
-    if (checkDirectory(dir)) {
-        if (!checkDirectoryHasFiles(dir)) {
-            hasErrors = true;
-        }
-    } else {
+// Check required directories
+console.log('Checking required directories:');
+assetConfig.required.forEach(dir => {
+    const dirExists = checkDirectory(dir, true);
+    if (!dirExists || !checkDirectoryHasFiles(dir, true)) {
         hasErrors = true;
+        createPlaceholder(dir);
+    }
+});
+
+// Check optional directories
+console.log('\nChecking optional directories:');
+assetConfig.optional.forEach(dir => {
+    if (checkDirectory(dir, false)) {
+        checkDirectoryHasFiles(dir, false);
     }
 });
 
 if (hasErrors) {
-    console.error('\n❌ Asset check failed. Please ensure all required assets are present.');
+    console.error('\n❌ Asset check failed. Placeholders have been created for missing required directories.');
     process.exit(1);
 } else {
-    console.log('\n✅ All assets verified successfully!');
+    console.log('\n✅ All required assets verified successfully!');
 }
