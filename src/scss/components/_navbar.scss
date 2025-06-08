@@ -1,6 +1,6 @@
-// 
+//
 // Navbar
-// 
+//
 
 // Global styling for the navbar
 
@@ -9,29 +9,62 @@
     top: 0;
     left: 0;
     right: 0;
-    z-index: $zindex-fixed;
-    border-bottom: $border-width solid $border-color;
-    background-color: $white;
+    z-index: 1030;
+    border-bottom: 1px solid $gray-200;
+    background-color: white;
     font-family: $headings-font-family;
 
     .navbar-brand {
-        font-weight: $headings-font-weight;
+        font-weight: 800;
+        color: $gray-800;
+
+        img.navbar-logo {
+            transition: transform 0.3s ease;
+        }
+
+        &:hover {
+            img.navbar-logo {
+                transform: scale(1.1);
+            }
+        }
     }
 
     .navbar-toggler {
         font-size: 0.75rem;
-        font-weight: $headings-font-weight;
+        font-weight: 800;
         padding: 0.75rem;
         text-transform: uppercase;
+        color: $gray-800;
     }
 
     .navbar-nav {
-        >li.nav-item {
-            >a.nav-link {
+        > li.nav-item {
+            > a.nav-link {
                 font-size: 0.75rem;
-                font-weight: $headings-font-weight;
+                font-weight: 800;
                 letter-spacing: 0.0625em;
                 text-transform: uppercase;
+
+                &:hover {
+                    color: $primary;
+                }
+            }
+        }
+    }
+
+    .dropdown-menu {
+        border: none;
+        border-radius: 0.5rem;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+
+        .dropdown-item {
+            font-size: 0.875rem;
+            font-weight: 600;
+            padding: 0.75rem 1.25rem;
+
+            &:hover {
+                background-color: $gray-100;
+                color: $primary;
             }
         }
     }
@@ -40,7 +73,7 @@
     // Set to large breakpoint and up (this should always match the .navbar-expand-* class
 
     @include media-breakpoint-up(lg) {
-        border-bottom: $border-width solid transparent;
+        border-bottom: 1px solid transparent;
         background: transparent;
 
         .navbar-brand {
@@ -48,18 +81,18 @@
 
             &:focus,
             &:hover {
-                color: fade-out($white, .2);
+                color: fade-out($white, 0.2);
             }
         }
 
         .navbar-nav {
-            >li.nav-item {
-                >a.nav-link {
+            > li.nav-item {
+                > a.nav-link {
                     color: $white;
 
                     &:focus,
                     &:hover {
-                        color: fade-out($white, .2);
+                        color: fade-out($white, 0.2);
                     }
                 }
             }

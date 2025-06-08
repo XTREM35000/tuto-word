@@ -15,8 +15,42 @@
 @import './components/buttons';
 @import './components/forms';
 @import './components/navbar';
+@import './components/cards';
 
 // Sections
 @import './sections/footer';
 @import './sections/masthead';
 @import './sections/post';
+
+// Tutorial-specific styles
+.tutorial-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+
+    img {
+        border: 1px solid #eee;
+        margin: 1rem 0;
+        max-width: 100%;
+        height: auto;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        color: $tutorial-primary;
+        margin-top: 3rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid rgba($tutorial-primary, 0.2);
+    }
+
+    h3 {
+        color: darken($tutorial-primary, 10%);
+        margin-top: 2rem;
+    }
+
+    .tutorial-nav {
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid #eee;
+    }
+}

@@ -8,7 +8,7 @@ html(lang='en')
         meta(name='description', content='')
         meta(name='author', content='')
 
-        title Clean Blog - Start Bootstrap Theme
+        title Thierry Gogo- Start Bootstrap Theme
 
         link(rel='icon', type='image/x-icon', href='assets/favicon.ico')
 
@@ -24,76 +24,66 @@ html(lang='en')
                 .row.gx-4.gx-lg-5.justify-content-center
                     .col-md-10.col-lg-8.col-xl-7
                         .site-heading
-                            h1 Clean Blog
-                            span.subheading A Blog Theme by Start Bootstrap
+                            h1 Tutoriels Office par Thierry Gogo
+                            span.subheading Formateur  et Développeur Web, FullStack
 
-        // Main Content
-        .container.px-4.px-lg-5
-            .row.gx-4.gx-lg-5.justify-content-center
-                .col-md-10.col-lg-8.col-xl-7
+        // Tutoriels Section
+        section.py-5
+            .container.px-4.px-lg-5
+                .row.gx-4.gy-4
+                    // Word Tutorial Card
+                    .col-md-6.col-lg-4
+                        .card.tutorial-card
+                            img.card-img-top(src='assets/img/word/word01.png', alt='Microsoft Word Tutorial')
+                            .card-body
+                                h5.card-title Microsoft Word
+                                p.card-text Apprenez les bases du traitement de texte : mise en forme, styles, tableaux et bien plus encore.
+                                a.btn.btn-tutorial(href='tuto-word.html') Commencer →
 
-                    // Post preview
-                    .post-preview
-                        a(href='post.html')
-                            h2.post-title
-                                | Man must explore, and this is exploration at its greatest
-                            h3.post-subtitle
-                                | Problems look mighty small from 150 miles up
-                        p.post-meta
-                            | Posted by
-                            a(href='#!') Start Bootstrap
-                            | on September 24, 2023
-                    
-                    // Divider
-                    hr.my-4
+                    // Excel Tutorial Card
+                    .col-md-6.col-lg-4
+                        .card.tutorial-card
+                            img.card-img-top(src='assets/img/excel/excel.png', alt='Microsoft Excel Tutorial')
+                            .card-body
+                                h5.card-title Microsoft Excel
+                                p.card-text Maîtrisez les tableurs : formules, graphiques et analyse de données (Bientôt disponible).
+                                a.btn.btn-tutorial(href='#', disabled) À venir →
 
-                    // Post preview
-                    .post-preview
-                        a(href='post.html')
-                            h2.post-title
-                                | I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.
-                        p.post-meta
-                            | Posted by
-                            a(href='#!') Start Bootstrap
-                            | on September 18, 2023
-                    
-                    // Divider
-                    hr.my-4
+                    // PowerPoint Tutorial Card
+                    .col-md-6.col-lg-4
+                        .card.tutorial-card
+                            img.card-img-top(src='assets/img/ppoint/ppoint.png', alt='Microsoft PowerPoint Tutorial')
+                            .card-body
+                                h5.card-title Microsoft PowerPoint
+                                p.card-text Créez des présentations professionnelles avec animations et transitions (Bientôt disponible).
+                                a.btn.btn-tutorial(href='#', disabled) À venir →
 
-                    // Post preview
-                    .post-preview
-                        a(href='post.html')
-                            h2.post-title
-                                | Science has not yet mastered prophecy
-                            h3.post-subtitle
-                                | We predict too much for the next year and yet far too little for the next ten.
-                        p.post-meta
-                            | Posted by
-                            a(href='#!') Start Bootstrap
-                            | on August 24, 2023
+        // Freelance Section
+        section.freelance-section
+            .container.px-4.px-lg-5
+                .row.gx-4.gx-lg-5.justify-content-center.text-center
+                    .col-md-10.col-lg-8.col-xl-7
+                        img.profile-img(src='assets/img/profile/profileb.png', alt='Thierry Gogo- Développeur FullStack')
+                        h2.mb-4 Thierry Gogo
+                        h3.text-primary.mb-3 Développeur FullStack & Formateur
+                        p.lead.mb-4 Passionné par le développement web et la formation, je combine expertise technique et pédagogie pour créer des solutions innovantes et former la prochaine génération de développeurs.
+                        .skills.mb-4
+                            span.badge.bg-primary.m-1 JavaScript
+                            span.badge.bg-primary.m-1 React
+                            span.badge.bg-primary.m-1 Node.js
+                            span.badge.bg-primary.m-1 Python
+                            span.badge.bg-primary.m-1 SQL
+                            span.badge.bg-primary.m-1 Microsoft Office
+                        p.mb-4 Je propose des services de développement web sur mesure et des formations en bureautique et programmation. Contactez-moi pour discuter de votre projet.
+                        .social-links
+                            a(href='https://github.com/thierrygog', target='_blank')
+                                i.fab.fa-github
+                            a(href='https://linkedin.com/in/thierrygog', target='_blank')
+                                i.fab.fa-linkedin
+                            a(href='mailto:contact@thierrygog.fr')
+                                i.fas.fa-envelope
+                        a.btn.btn-primary.mt-4(href='contact.html') Me contacter
 
-                    // Divider
-                    hr.my-4
-
-                    // Post preview
-                    .post-preview
-                        a(href='post.html')
-                            h2.post-title
-                                | Failure is not an option
-                            h3.post-subtitle
-                                | Many say exploration is part of our destiny, but it’s actually our duty to future generations.
-                        p.post-meta
-                            | Posted by
-                            a(href='#!') Start Bootstrap
-                            | on July 8, 2023
-                    
-                    // Divider
-                    hr.my-4
-
-                    // Pager
-                    .d-flex.justify-content-end.mb-4
-                        a.btn.btn-primary.text-uppercase(href='#!') Older Posts →
-        
         include includes/footer.pug
 
         include includes/scripts.pug

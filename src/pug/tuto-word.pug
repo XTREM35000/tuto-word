@@ -1,0 +1,202 @@
+extends layout
+
+block content
+    - var title = "Touvoly Microsoft Word"
+    - var subtitle = "Franck, voici les bases du traitement de texte"
+
+    include includes/tutorial-header
+
+    .tutorial-content
+        article
+            h1#tutoriel-word= title
+
+            section#introduction
+                h2 Introduction
+                p Microsoft Word est l'un des logiciels de traitement de texte les plus utilisés au monde. Ce tutoriel vous guidera à travers les fonctionnalités essentielles pour créer des documents professionnels.
+                img(src="/assets/img/word/introduction.png" alt="Interface de Microsoft Word")
+
+            section#chapitre-1
+                h2 Chapitre 1 : Premiers pas avec Word
+
+                h3#lancer-word 1.1 Lancer Word
+                p Pour commencer à utiliser Word, vous pouvez :
+                ul
+                    li Cliquer sur le menu Démarrer et rechercher "Word"
+                    li Utiliser le raccourci sur votre bureau
+                    li Ouvrir un document Word existant
+                img(src="/assets/img/word/lancer-word.png" alt="Capture : Comment lancer Microsoft Word")
+
+                h3#interface-word 1.2 L'interface de Word
+                p L'interface de Word se compose de plusieurs éléments :
+                ul
+                    li Le Ruban : contient les outils et commandes
+                    li La Barre d'outils Accès rapide
+                    li La Zone de travail
+                    li La Barre d'état
+                img(src="/assets/img/word/interface-word.png" alt="Capture : L'interface de Microsoft Word annotée")
+
+            section#chapitre-2
+                h2 Chapitre 2 : Découverte de l'Interface
+
+                h3#zones-ecran 2.1 Les Principales Zones de l'Écran
+                p L'interface de Word est organisée en plusieurs zones distinctes :
+                ul
+                    li
+                        strong Barre de titre :
+                        | Affiche le nom du document actif
+                    li
+                        strong Ruban :
+                        | Contient les onglets (Accueil, Insertion, Mise en page...) avec tous les outils
+                    li
+                        strong Zone de travail :
+                        | La feuille blanche où vous écrivez votre texte
+                    li
+                        strong Barre d'état :
+                        | Affiche les informations importantes (numéro de page, nombre de mots)
+                img(src="/assets/img/word/zones-ecran.png" alt="Capture : Les différentes zones de l'écran Word")
+
+                h3#personnaliser-affichage 2.2 Personnaliser l'Affichage
+                p Pour adapter l'interface à vos besoins :
+                ul
+                    li Utilisez l'onglet "Affichage" pour changer le zoom
+                    li Passez en mode "Plein écran" pour plus d'espace
+                    li Ajustez la disposition des fenêtres selon vos préférences
+                img(src="/assets/img/word/personnaliser-affichage.png" alt="Capture : Options de personnalisation de l'affichage")
+
+            section#chapitre-3
+                h2 Chapitre 3 : Saisie et Mise en Forme du Texte
+
+                h3#ecrire-corriger 3.1 Écrire et Corriger du Texte
+                p Les bases de la saisie de texte :
+                ul
+                    li Cliquez n'importe où pour placer le curseur et commencez à taper
+                    li Utilisez la touche Backspace pour effacer à gauche du curseur
+                    li Utilisez la touche Delete pour effacer à droite du curseur
+                    li Double-cliquez pour sélectionner un mot
+                    li Triple-cliquez pour sélectionner un paragraphe
+                img(src="/assets/img/word/saisie-texte.png" alt="Capture : Saisie et correction de texte")
+
+                h3#mise-en-forme 3.2 Modifier la Police, la Taille, la Couleur
+                p Pour mettre en forme votre texte :
+                ol
+                    li Sélectionnez le texte à modifier
+                    li Utilisez les outils de l'onglet "Accueil" :
+                        ul
+                            li Police (Calibri, Arial, Times New Roman...)
+                            li Taille (8, 10, 12, 14 points...)
+                            li Style (Gras, Italique, Souligné)
+                            li Couleur du texte
+                img(src="/assets/img/word/mise-en-forme.png" alt="Capture : Options de mise en forme du texte")
+
+            section#chapitre-4
+                h2 Chapitre 4 : Gestion des Paragraphes et des Listes
+
+                h3#alignement 4.1 Aligner et Espacer un Paragraphe
+                p Pour gérer la mise en forme des paragraphes :
+                ul
+                    li Utilisez les boutons d'alignement :
+                        ul
+                            li À gauche (par défaut)
+                            li Centré (titres)
+                            li À droite (dates)
+                            li Justifié (texte principal)
+                    li Ajustez l'interligne via le menu Paragraphe
+                    li Définissez les retraits et espacements
+                img(src="/assets/img/word/alignement.png" alt="Capture : Options d'alignement des paragraphes")
+
+                h3#listes 4.2 Créer des Listes à Puces ou Numérotées
+                p Pour organiser votre information :
+                ul
+                    li Utilisez les listes à puces pour les énumérations simples
+                    li Créez des listes numérotées pour les étapes séquentielles
+                    li Personnalisez le style des puces ou la numérotation
+                img(src="/assets/img/word/listes.png" alt="Capture : Création de listes")
+
+            section#chapitre-5
+                h2 Chapitre 5 : Insertion d'Éléments
+
+                h3#images 5.1 Ajouter une Image
+                p Pour illustrer vos documents :
+                ol
+                    li Cliquez sur l'onglet "Insertion"
+                    li Choisissez "Images" et sélectionnez votre fichier
+                    li Ajustez la taille et la position de l'image
+                    li Utilisez les outils de mise en forme d'image
+                img(src="/assets/img/word/insertion-image.png" alt="Capture : Insertion d'images")
+
+                h3#tableaux 5.2 Créer un Tableau
+                p Pour organiser vos données :
+                ol
+                    li Dans l'onglet "Insertion", cliquez sur "Tableau"
+                    li Sélectionnez le nombre de colonnes et de lignes
+                    li Personnalisez les bordures et le remplissage
+                    li Ajoutez ou supprimez des cellules selon vos besoins
+                img(src="/assets/img/word/tableaux.png" alt="Capture : Création de tableaux")
+
+            section#chapitre-6
+                h2 Chapitre 6 : Mise en Page et Impression
+
+                h3#mise-en-page 6.1 Modifier les Marges et l'Orientation
+                p Pour configurer votre document :
+                ul
+                    li Choisissez les marges (Normal, Étroit, Modéré...)
+                    li Définissez l'orientation (Portrait ou Paysage)
+                    li Ajustez la taille du papier
+                    li Configurez les en-têtes et pieds de page
+                img(src="/assets/img/word/mise-en-page.png" alt="Capture : Options de mise en page")
+
+                h3#impression 6.2 Imprimer un Document
+                p Pour imprimer votre travail :
+                ol
+                    li Ouvrez le menu Fichier et cliquez sur "Imprimer"
+                    li Vérifiez l'aperçu avant impression
+                    li Sélectionnez vos options d'impression
+                    li Cliquez sur le bouton "Imprimer"
+                img(src="/assets/img/word/impression.png" alt="Capture : Options d'impression")
+
+            section#chapitre-7
+                h2 Chapitre 7 : Enregistrement et Partage
+
+                h3#enregistrement 7.1 Sauvegarder son Document
+                p Pour ne pas perdre votre travail :
+                ul
+                    li Utilisez Ctrl + S pour une sauvegarde rapide
+                    li Choisissez "Enregistrer sous" pour un nouveau fichier
+                    li Sélectionnez un emplacement et un nom de fichier
+                    li Choisissez le format de fichier (.docx par défaut)
+                img(src="/assets/img/word/enregistrement.png" alt="Capture : Options d'enregistrement")
+
+                h3#export-pdf 7.2 Exporter en PDF
+                p Pour partager vos documents :
+                ol
+                    li Allez dans "Fichier" > "Exporter"
+                    li Choisissez "Créer un document PDF/XPS"
+                    li Sélectionnez les options de qualité
+                    li Cliquez sur "Publier"
+                img(src="/assets/img/word/export-pdf.png" alt="Capture : Exportation en PDF")
+
+            section#chapitre-8
+                h2 Chapitre 8 : Conclusion et Exercices
+
+                h3#recap 8.1 Récapitulatif des Fonctions Clés
+                p Word vous permet de :
+                ul
+                    li Créer des documents professionnels
+                    li Mettre en forme du texte avec style
+                    li Insérer des images et des tableaux
+                    li Organiser l'information efficacement
+                    li Partager vos documents facilement
+
+                h3#exercices 8.2 Exercices Pratiques
+                p Pour vous entraîner, essayez de :
+                ol
+                    li Créer un CV simple avec une liste à puces
+                    li Insérer une image et centrer le titre
+                    li Exporter le document en PDF
+                p.alert.alert-info
+                    strong Conseil :
+                    | Pratiquez régulièrement pour maîtriser ces fonctionnalités.
+
+            //- Navigation entre chapitres
+            - var prevChapter = { title: "Retour à l'accueil", link: "index.html" }
+            include includes/tutorial-footer

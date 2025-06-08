@@ -1,17 +1,23 @@
 // Navigation
 nav#mainNav.navbar.navbar-expand-lg.navbar-light
     .container.px-4.px-lg-5
-        a.navbar-brand(href='index.html') Start Bootstrap
+        a.navbar-brand.d-flex.align-items-center(href='index.html')
+            img.navbar-logo.me-2(src='assets/img/profile/profile01.png', alt='Thierry Gogo', width='80', height='80', style='border-radius: 50%;')
+            span Thierry Gogo
         button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
             | Menu
             i.fas.fa-bars
         #navbarResponsive.collapse.navbar-collapse
             ul.navbar-nav.ms-auto.py-4.py-lg-0
                 li.nav-item
-                    a.nav-link.px-lg-3.py-3.py-lg-4(href='index.html') Home
+                    a.nav-link.px-lg-3.py-3.py-lg-4(href='index.html') Accueil
+                li.nav-item.dropdown
+                    a.nav-link.dropdown-toggle.px-lg-3.py-3.py-lg-4(href='#', role='button', data-bs-toggle='dropdown', aria-expanded='false') Tutoriels
+                    .dropdown-menu
+                        a.dropdown-item(href='/tuto-word.html') Bases de Word
+                        a.dropdown-item(href='#') Excel (Bientôt)
+                        a.dropdown-item(href='#') PowerPoint (Bientôt)
                 li.nav-item
-                    a.nav-link.px-lg-3.py-3.py-lg-4(href='about.html') About
-                li.nav-item
-                    a.nav-link.px-lg-3.py-3.py-lg-4(href='post.html') Sample Post
+                    a.nav-link.px-lg-3.py-3.py-lg-4(href='about.html') À propos
                 li.nav-item
                     a.nav-link.px-lg-3.py-3.py-lg-4(href='contact.html') Contact

@@ -1,0 +1,14 @@
+// Tutorial Navigation
+.tutorial-nav.py-4
+    .container.px-4.px-lg-5
+        .row.gx-4.gx-lg-5.justify-content-between
+            .col-auto
+                if prevChapter
+                    a.btn.btn-primary(href=prevChapter.link)
+                        i.fas.fa-arrow-left.me-2
+                        | #{prevChapter.title}
+            .col-auto
+                if nextChapter
+                    a.btn.btn-primary(href=nextChapter.link)
+                        | #{nextChapter.title}
+                        i.fas.fa-arrow-right.ms-2

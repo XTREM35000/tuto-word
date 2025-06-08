@@ -12,7 +12,7 @@
         "start": "npm run build && node scripts/start.js",
         "start:debug": "npm run build && node scripts/start-debug.js"
     },
-    "description": "Clean Blog is a Medium inspired blog theme for Bootstrap.",
+    "description": "Thierry Gogois a Medium inspired blog theme for Bootstrap.",
     "keywords": [
         "css",
         "sass",

@@ -1,0 +1,80 @@
+Structure du projet (exclusions : node_modules, nhost, .vscode, .nuxt, .output, .git, .bolt, .next)
+========================================
+
+📄 .gitignore
+📁 dist
+  📄 about.html
+  📁 assets
+    📄 favicon.ico
+    📁 img
+      📄 about-bg.jpg
+      📄 contact-bg.jpg
+      📄 home-bg.jpg
+      📄 post-bg.jpg
+      📄 post-sample-image.jpg
+  📄 contact.html
+  📁 css
+    📄 styles.css
+  📄 index.html
+  📁 js
+    📄 scripts.js
+  📄 post.html
+📄 LICENSE
+📄 liste.mjs
+📄 package-lock.json
+📄 package.json
+📄 project_structure.txt
+📄 README.md
+📁 scripts
+  📄 build-assets.js
+  📄 build-pug.js
+  📄 build-scripts.js
+  📄 build-scss.js
+  📄 clean.js
+  📄 render-assets.js
+  📄 render-pug.js
+  📄 render-scripts.js
+  📄 render-scss.js
+  📄 sb-watch.js
+  📄 start-debug.js
+  📄 start.js
+📁 src
+  📁 assets
+    📄 favicon.ico
+    📁 img
+      📄 about-bg.jpg
+      📄 contact-bg.jpg
+      📄 home-bg.jpg
+      📄 post-bg.jpg
+      📄 post-sample-image.jpg
+  📁 js
+    📄 scripts.js
+  📁 pug
+    📄 about.pug
+    📄 contact.pug
+    📁 includes
+      📄 css.pug
+      📄 footer.pug
+      📄 navbar.pug
+      📄 scripts.pug
+    📄 index.pug
+    📄 post.pug
+  📁 scss
+    📁 components
+      📄 _buttons.scss
+      📄 _forms.scss
+      📄 _navbar.scss
+    📁 sections
+      📄 _footer.scss
+      📄 _masthead.scss
+      📄 _post.scss
+    📄 styles.scss
+    📁 variables
+      📄 _buttons.scss
+      📄 _colors.scss
+      📄 _forms.scss
+      📄 _options.scss
+      📄 _overlay.scss
+      📄 _typography.scss
+    📄 _global.scss
+    📄 _variables.scss
