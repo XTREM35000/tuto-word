@@ -11,7 +11,7 @@
     "clean": "node scripts/clean.js",
     "start": "npm run build && node scripts/start.js",
     "start:debug": "npm run build && node scripts/start-debug.js",
-    "copy-assets": "mkdir -p dist/assets && cp -R src/assets/* dist/assets/ || true"
+    "copy-assets": "shx mkdir -p dist/assets && shx cp -R src/assets/* dist/assets/"
   },
   "dependencies": {
     "bootstrap": "5.2.3",
@@ -27,6 +27,7 @@
     "pug": "3.0.2",
     "sass": "1.60.0",
     "shelljs": "0.8.5",
+    "shx": "^0.4.0",
     "upath": "2.0.1"
   }
 }
