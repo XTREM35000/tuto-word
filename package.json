@@ -2,30 +2,33 @@
   "title": "GogoSoft",
   "name": "Formation-Office",
   "version": "6.0.9",
+  "description": "Blog de tutoriels Word et autres outils bureautiques",
   "scripts": {
-    "build": "npm run clean && npm run build:pug && npm run build:scss && npm run build:scripts && npm run build:assets && npm run copy-assets",
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
     "build:assets": "node scripts/build-assets.js",
     "build:pug": "node scripts/build-pug.js",
-    "build:scripts": "node scripts/build-scripts.js",
     "build:scss": "node scripts/build-scss.js",
-    "clean": "node scripts/clean.js",
-    "start": "npm run build && node scripts/start.js",
-    "start:debug": "npm run build && node scripts/start-debug.js",
-    "copy-assets": "shx mkdir -p dist/assets && shx cp -R src/assets/* dist/assets/"
+    "build": "npm run prebuild && concurrently \"npm run build:assets\" \"npm run build:pug\" \"npm run build:scss\"",
+    "dev": "npm run build && live-server dist",
+    "vercel-build": "npm run build"
   },
   "dependencies": {
     "bootstrap": "5.2.3",
-    "html2pdf.js": "^0.10.3"
+    "html2pdf.js": "^0.10.3",
+    "pug": "3.0.2",
+    "sass": "1.60.0"
   },
   "devDependencies": {
     "autoprefixer": "10.4.14",
     "browser-sync": "2.29.1",
     "chokidar": "3.5.3",
     "concurrently": "6.3.0",
+    "copyfiles": "^2.4.1",
+    "live-server": "^1.2.2",
     "postcss": "8.4.21",
     "prettier": "2.8.6",
-    "pug": "3.0.2",
-    "sass": "1.60.0",
+    "rimraf": "^5.0.10",
     "shelljs": "0.8.5",
     "shx": "^0.4.0",
     "upath": "2.0.1"
