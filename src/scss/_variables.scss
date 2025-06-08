@@ -11,5 +11,23 @@
 @import './variables/overlay';
 @import './variables/forms';
 
-// Tutorial-specific variables
-$tutorial-primary: #2b579a; // Word blue color
+// Variables
+
+// Colors
+$primary: #0085A1;
+$secondary: #868e96;
+$tutorial-primary: #2C3E50;
+
+// Override Bootstrap primary
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary
+);
+
+// Typography
+$font-family-base: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$headings-font-family: 'Lora', 'Times New Roman', serif;
+
+// Spacing
+$spacer: 1rem;
+$navbar-height: 4rem;

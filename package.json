@@ -4,13 +4,15 @@
   "version": "6.0.9",
   "description": "Blog de tutoriels Word et autres outils bureautiques",
   "scripts": {
+    "start": "npm run dev",
     "clean": "rimraf dist",
     "prebuild": "npm run clean",
-    "build:assets": "node scripts/build-assets.js",
+    "build:assets": "node scripts/build-assets.js && npm run copy:assets",
     "build:pug": "node scripts/build-pug.js",
     "build:scss": "node scripts/build-scss.js",
-    "build": "npm run prebuild && concurrently \"npm run build:assets\" \"npm run build:pug\" \"npm run build:scss\"",
-    "dev": "npm run build && live-server dist",
+    "copy:assets": "shx mkdir -p dist/assets && shx cp -R src/assets/* dist/assets/",
+    "build": "npm run prebuild && concurrently -n \"ASSETS,PUG,SCSS\" -c \"bgBlue.bold,bgGreen.bold,bgMagenta.bold\" \"npm run build:assets\" \"npm run build:pug\" \"npm run build:scss\"",
+    "dev": "npm run build && live-server dist --port=3000 --open=/",
     "vercel-build": "npm run build"
   },
   "dependencies": {
