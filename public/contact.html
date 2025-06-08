@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Thierry Gogo- Start Bootstrap Theme</title>
+        <meta name="description" content="Contactez Thierry Gogo pour vos projets de développement web et rédaction technique" />
+        <meta name="author" content="Thierry Gogo" />
+        <title>Contact - Thierry Gogo | Développement Web & Rédaction Technique</title>
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -50,8 +50,8 @@
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="page-heading">
-                            <h1>Contact Me</h1>
-                            <span class="subheading">Have questions? I have answers.</span>
+                            <h1>Contactez-moi</h1>
+                            <span class="subheading">Discutons de votre projet</span>
                         </div>
                     </div>
                 </div>
@@ -62,59 +62,73 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
-                        <p>Want to get in touch? Fill out the form below to send me a message and I will get back to you as soon as possible!</p>
-                        <div class="my-5">
-                            <!-- * * * * * * * * * * * * * * *-->
-                            <!-- * * SB Forms Contact Form * *-->
-                            <!-- * * * * * * * * * * * * * * *-->
-                            <!-- This form is pre-integrated with SB Forms.-->
-                            <!-- To make this form functional, sign up at-->
-                            <!-- https://startbootstrap.com/solution/contact-forms-->
-                            <!-- to get an API token!-->
-                            <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                                <div class="form-floating">
-                                    <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
-                                    <label for="name">Name</label>
-                                    <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                                </div>
-                                <div class="form-floating">
-                                    <input class="form-control" id="email" type="email" placeholder="Enter your email..." data-sb-validations="required,email" />
-                                    <label for="email">Email address</label>
-                                    <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                                    <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
-                                </div>
-                                <div class="form-floating">
-                                    <input class="form-control" id="phone" type="tel" placeholder="Enter your phone number..." data-sb-validations="required" />
-                                    <label for="phone">Phone Number</label>
-                                    <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
-                                </div>
-                                <div class="form-floating">
-                                    <textarea class="form-control" id="message" placeholder="Enter your message here..." style="height: 12rem" data-sb-validations="required"></textarea>
-                                    <label for="message">Message</label>
-                                    <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
-                                </div>
-                                <br />
-                                <!-- Submit success message-->
-                                <!---->
-                                <!-- This is what your users will see when the form-->
-                                <!-- has successfully submitted-->
-                                <div class="d-none" id="submitSuccessMessage">
-                                    <div class="text-center mb-3">
-                                        <div class="fw-bolder">Form submission successful!</div>
-                                        To activate this form, sign up at
-                                        <br />
-                                        <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                                    </div>
-                                </div>
-                                <!-- Submit error message-->
-                                <!---->
-                                <!-- This is what your users will see when there is-->
-                                <!-- an error submitting the form-->
-                                <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
-                                <!-- Submit Button-->
-                                <button class="btn btn-primary text-uppercase disabled" id="submitButton" type="submit">Send</button>
-                            </form>
+                        <div class="row mb-5">
+                            <div class="col-md-6">
+                                <h3 class="h4 mb-3">
+                                    <i class="fas fa-envelope text-primary me-2"></i>
+                                    Email
+                                </h3>
+                                <p class="mb-0"><a href="mailto:contact@thierrygogo.com">contact@thierrygogo.com</a></p>
+                            </div>
+                            <div class="col-md-6">
+                                <h3 class="h4 mb-3">
+                                    <i class="fas fa-phone text-primary me-2"></i>
+                                    Téléphone
+                                </h3>
+                                <p class="mb-0">+225 07 58 96 61 56</p>
+                            </div>
                         </div>
+                        <hr class="my-5" />
+                        <h2 class="text-center mb-4">Formulaire de Contact</h2>
+                        <p class="text-center mb-5">Pour toute demande de devis ou information complémentaire, n'hésitez pas à me contacter via le formulaire ci-dessous.</p>
+                        <form class="needs-validation" id="contactForm" data-sb-form-api-token="API_TOKEN" novalidate>
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="name" type="text" placeholder="Votre nom" data-sb-validations="required" />
+                                <label for="name">Nom complet</label>
+                                <div class="invalid-feedback" data-sb-feedback="name:required">Veuillez indiquer votre nom.</div>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="email" type="email" placeholder="Votre email" data-sb-validations="required,email" />
+                                <label for="email">Adresse email</label>
+                                <div class="invalid-feedback" data-sb-feedback="email:required">Veuillez indiquer votre email.</div>
+                                <div class="invalid-feedback" data-sb-feedback="email:email">L'adresse email n'est pas valide.</div>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="phone" type="tel" placeholder="Votre téléphone" data-sb-validations="required" />
+                                <label for="phone">Numéro de téléphone</label>
+                                <div class="invalid-feedback" data-sb-feedback="phone:required">Veuillez indiquer votre numéro de téléphone.</div>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <select class="form-control" id="subject" data-sb-validations="required">
+                                    <option value="">Sélectionnez...</option>
+                                    <option value="dev-web">Développement Web</option>
+                                    <option value="redaction">Rédaction Technique</option>
+                                    <option value="autre">Autre</option>
+                                </select>
+                                <label for="subject">Type de projet</label>
+                                <div class="invalid-feedback" data-sb-feedback="subject:required">Veuillez sélectionner le type de projet.</div>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" id="message" placeholder="Votre message" style="height: 12rem" data-sb-validations="required"></textarea>
+                                <label for="message">Message</label>
+                                <div class="invalid-feedback" data-sb-feedback="message:required">Veuillez écrire votre message.</div>
+                            </div>
+                            <!-- Submit success message-->
+                            <div class="d-none" id="submitSuccessMessage">
+                                <div class="text-center mb-3 mt-4">
+                                    <div class="fw-bolder">Message envoyé avec succès !</div>
+                                    Je vous répondrai dans les plus brefs délais.
+                                </div>
+                            </div>
+                            <!-- Submit error message-->
+                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Erreur lors de l'envoi du message.</div></div>
+                            <div class="d-grid gap-2 mt-4">
+                                <button class="btn btn-primary btn-lg" id="submitButton" type="submit">
+                                    <i class="fas fa-paper-plane me-2"></i>
+                                    Envoyer le message
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -157,12 +171,14 @@
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Font Awesome icons-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- html2pdf library-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- PDF Generator-->
+        <script src="js/pdf-generator.js"></script>
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
 </html>
