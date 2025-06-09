@@ -22,6 +22,37 @@ function ensureDirectoryExists(filePath) {
     fs.mkdirSync(dirname);
 }
 
+// Function to copy background images to all necessary directories
+function copyBackgroundImages() {
+    const bgImages = ['home-bg.jpg', 'tutoriels-bg.jpg', 'about-bg.jpg', 'contact-bg.jpg', 'post-bg.jpg'];
+
+    // Ensure img directories exist
+    shell.mkdir('-p', path.join(publicDir, 'assets', 'img'));
+    shell.mkdir('-p', path.join(distDir, 'assets', 'img'));
+    shell.mkdir('-p', path.join(distDir, 'assets', 'img', 'word'));
+
+    bgImages.forEach(image => {
+        // If image exists in src, copy it to public and dist
+        if (fs.existsSync(path.join(srcDir, 'assets', 'img', image))) {
+            shell.cp(
+                path.join(srcDir, 'assets', 'img', image),
+                path.join(publicDir, 'assets', 'img', image)
+            );
+            shell.cp(
+                path.join(srcDir, 'assets', 'img', image),
+                path.join(distDir, 'assets', 'img', image)
+            );
+            // Also copy header-bg.jpg to word directory
+            if (image === 'home-bg.jpg') {
+                shell.cp(
+                    path.join(srcDir, 'assets', 'img', image),
+                    path.join(distDir, 'assets', 'img', 'word', image)
+                );
+            }
+        }
+    });
+}
+
 // Clean dist directory
 console.log('Cleaning dist directory...');
 shell.rm('-rf', path.join(distDir, '*'));
@@ -43,6 +74,10 @@ if (fs.existsSync(path.join(publicDir, 'assets'))) {
 // Ensure critical directories exist
 const criticalDirs = ['css', 'js', 'img', 'fonts'].map(dir => path.join(distDir, 'assets', dir));
 criticalDirs.forEach(dir => shell.mkdir('-p', dir));
+
+// Copy background images to all necessary locations
+console.log('Copying background images...');
+copyBackgroundImages();
 
 // Copy other public files (HTML, etc.)
 const publicFiles = fs.readdirSync(publicDir)
