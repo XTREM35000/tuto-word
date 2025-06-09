@@ -2,13 +2,14 @@ extends layout
 
 block content
     - var title = "Touvoly Microsoft Word"
+    - var title2 = "Touvoly Microsoft Word"
     - var subtitle = "Franck, voici les bases du traitement de texte"
 
     include includes/tutorial-header
 
     .tutorial-content
         article
-            h1#tutoriel-word= title
+            h1#tutoriel-word #{title2}
 
             section#introduction.chapter-section
                 h2 Introduction

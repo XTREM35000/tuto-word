@@ -11,6 +11,9 @@ header.masthead {
     background-color: $gray-600;
     background-attachment: scroll;
     background-size: cover;
+    min-height: 400px; // Hauteur minimale fixe
+    display: flex;
+    align-items: center;
 
     // Create the overlay for the masthead
     // Modify the overlay color and opacity in src/variables/overlay.scss
@@ -25,15 +28,15 @@ header.masthead {
     }
 
     // Set color for all headings
-
     .page-heading,
     .post-heading,
     .site-heading {
         color: $white;
+        position: relative; // Pour être au-dessus de l'overlay
+        width: 100%;
     }
 
     // Styling shared by site and page heading
-
     .page-heading {
         text-align: center;
         padding: 2rem 0;
@@ -61,7 +64,6 @@ header.masthead {
     }
 
     // Styling specific to post headings
-
     .post-heading {
         h1 {
             font-size: 2.25rem;
@@ -93,8 +95,8 @@ header.masthead {
     }
 
     // Desktop styling for headings
-
     @include media-breakpoint-up(lg) {
+        min-height: 500px; // Hauteur minimale plus grande sur desktop
         padding-top: 8rem;
         padding-bottom: 8rem;
 

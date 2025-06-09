@@ -6,6 +6,7 @@ const shell = require('shelljs');
 
 // Configuration
 const publicDir = 'public';
+const srcDir = 'src';
 const distDir = 'dist';
 
 // Ensure the dist directory exists
@@ -21,61 +22,34 @@ function ensureDirectoryExists(filePath) {
     fs.mkdirSync(dirname);
 }
 
-// Copy all assets from public to dist
-console.log('Copying assets from public to dist...');
+// Clean dist directory
+console.log('Cleaning dist directory...');
+shell.rm('-rf', path.join(distDir, '*'));
 
-// First, create the assets directory structure in dist
-shell.mkdir('-p', path.join(distDir, 'assets', 'img'));
-
-// Copy all image directories
-const imgDirs = [
-    'word',
-    'excel',
-    'ppoint',
-    'profile',
-    'projets',
-    'bg',
-    'logo',
-    'clients'
-];
-
-imgDirs.forEach(dir => {
-    const srcPath = path.join(publicDir, 'assets', 'img', dir);
-    const destPath = path.join(distDir, 'assets', 'img', dir);
-
-    if (fs.existsSync(srcPath)) {
-        console.log(`Copying ${dir} images...`);
-        shell.mkdir('-p', destPath);
-        shell.cp('-R', `${srcPath}/*`, destPath);
-    }
-});
-
-// Copy individual images from the root of img directory
-const imgRoot = path.join(publicDir, 'assets', 'img');
-if (fs.existsSync(imgRoot)) {
-    const files = fs.readdirSync(imgRoot).filter(file =>
-        fs.statSync(path.join(imgRoot, file)).isFile()
-    );
-
-    files.forEach(file => {
-        shell.cp(
-            path.join(imgRoot, file),
-            path.join(distDir, 'assets', 'img', file)
-        );
-    });
+// Copy all assets from src to dist
+console.log('Copying assets from src to dist...');
+if (fs.existsSync(path.join(srcDir, 'assets'))) {
+    shell.mkdir('-p', path.join(distDir, 'assets'));
+    shell.cp('-R', path.join(srcDir, 'assets', '*'), path.join(distDir, 'assets'));
 }
 
-// Copy other assets if they exist
-const otherAssetDirs = ['css', 'js', 'fonts'];
-otherAssetDirs.forEach(dir => {
-    const srcPath = path.join(publicDir, 'assets', dir);
-    const destPath = path.join(distDir, 'assets', dir);
+// Copy all assets from public to dist (overwriting if necessary)
+console.log('Copying assets from public to dist...');
+if (fs.existsSync(path.join(publicDir, 'assets'))) {
+    shell.mkdir('-p', path.join(distDir, 'assets'));
+    shell.cp('-R', path.join(publicDir, 'assets', '*'), path.join(distDir, 'assets'));
+}
 
-    if (fs.existsSync(srcPath)) {
-        console.log(`Copying ${dir} assets...`);
-        shell.mkdir('-p', destPath);
-        shell.cp('-R', `${srcPath}/*`, destPath);
-    }
+// Ensure critical directories exist
+const criticalDirs = ['css', 'js', 'img', 'fonts'].map(dir => path.join(distDir, 'assets', dir));
+criticalDirs.forEach(dir => shell.mkdir('-p', dir));
+
+// Copy other public files (HTML, etc.)
+const publicFiles = fs.readdirSync(publicDir)
+    .filter(file => fs.statSync(path.join(publicDir, file)).isFile());
+
+publicFiles.forEach(file => {
+    shell.cp(path.join(publicDir, file), path.join(distDir, file));
 });
 
 console.log('Assets copied successfully!');
