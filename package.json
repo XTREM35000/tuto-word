@@ -11,7 +11,7 @@
     "build:pug": "node scripts/build-pug.js",
     "build:scss": "node scripts/build-scss.js",
     "check:assets": "node scripts/check-assets.js",
-    "build": "npm run check:assets && npm run prebuild && concurrently -n \"ASSETS,PUG,SCSS\" -c \"bgBlue.bold,bgGreen.bold,bgMagenta.bold\" \"npm run build:assets\" \"npm run build:pug\" \"npm run build:scss\"",
+    "build": "npm run check:assets && npm run prebuild && concurrently -n \"ASSETS,PUG,SCSS\" -c \"bgBlue.bold,bgGreen.bold,bgMagenta.bold\" \"npm run build:assets\" \"npm run build:pug\" \"npm run build:scss\" && node scripts/build.js",
     "dev": "npm run build && live-server dist --port=3000 --open=/",
     "vercel-build": "npm run build"
   },
@@ -19,7 +19,8 @@
     "bootstrap": "5.2.3",
     "html2pdf.js": "^0.10.3",
     "pug": "3.0.2",
-    "sass": "1.60.0"
+    "sass": "1.60.0",
+    "fs-extra": "^11.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",
