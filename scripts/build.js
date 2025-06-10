@@ -2,6 +2,12 @@ const fs = require('fs-extra');
 const path = require('path');
 const shell = require('shelljs');
 
+// Fonction pour normaliser la casse des noms de fichiers
+function normalizeCase(filePath) {
+    const parts = filePath.split(path.sep);
+    return parts.map(part => part.toLowerCase()).join(path.sep);
+}
+
 async function build() {
     try {
         const distDir = 'dist';
@@ -28,6 +34,27 @@ async function build() {
                 return shouldCopy;
             }
         });
+
+        // Normaliser la casse des noms de fichiers
+        const normalizeFiles = async (dir) => {
+            const files = await fs.readdir(dir, { withFileTypes: true });
+            for (const file of files) {
+                const oldPath = path.join(dir, file.name);
+                const newPath = path.join(dir, file.name.toLowerCase());
+
+                if (oldPath !== newPath) {
+                    if (file.isDirectory()) {
+                        await normalizeFiles(oldPath);
+                        await fs.rename(oldPath, newPath);
+                    } else {
+                        await fs.rename(oldPath, newPath);
+                    }
+                }
+            }
+        };
+
+        // Normaliser la casse dans le dossier assets
+        await normalizeFiles(distAssetsDir);
 
         // Ensure all necessary directories exist
         const requiredDirs = [
