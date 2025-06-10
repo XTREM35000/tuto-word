@@ -30,9 +30,19 @@ function copyBackgroundImages() {
     shell.mkdir('-p', path.join(publicDir, 'assets', 'img'));
     shell.mkdir('-p', path.join(distDir, 'assets', 'img'));
     shell.mkdir('-p', path.join(distDir, 'assets', 'img', 'word'));
+    shell.mkdir('-p', path.join(distDir, 'assets', 'img', 'excel'));
+    shell.mkdir('-p', path.join(distDir, 'assets', 'img', 'ppoint'));
+    shell.mkdir('-p', path.join(distDir, 'assets', 'img', 'profile'));
+    shell.mkdir('-p', path.join(distDir, 'assets', 'img', 'bg'));
 
+    // Copy all images from src/assets/img to public and dist
+    if (fs.existsSync(path.join(srcDir, 'assets', 'img'))) {
+        shell.cp('-R', path.join(srcDir, 'assets', 'img', '*'), path.join(publicDir, 'assets', 'img'));
+        shell.cp('-R', path.join(srcDir, 'assets', 'img', '*'), path.join(distDir, 'assets', 'img'));
+    }
+
+    // Copy specific background images
     bgImages.forEach(image => {
-        // If image exists in src, copy it to public and dist
         if (fs.existsSync(path.join(srcDir, 'assets', 'img', image))) {
             shell.cp(
                 path.join(srcDir, 'assets', 'img', image),

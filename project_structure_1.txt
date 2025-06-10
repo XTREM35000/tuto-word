@@ -1,0 +1,138 @@
+Structure du projet (exclusions : node_modules, dist, public, nhost, .vscode, .nuxt, .output, .git, .bolt, .next)
+========================================
+
+📄 .gitattributes
+📄 .gitignore
+📁 docs
+  📄 travaux.md
+📄 info.md
+📄 LICENSE
+📄 liste.mjs
+📄 package-lock.json
+📄 package.json
+📄 project_structure.txt
+📄 project_structure_1.txt
+📄 README.md
+📁 scripts
+  📄 build-assets.js
+  📄 build-pug.js
+  📄 build-scripts.js
+  📄 build-scss.js
+  📄 build.js
+  📄 check-assets.js
+  📄 clean.js
+  📄 render-assets.js
+  📄 render-pug.js
+  📄 render-scripts.js
+  📄 render-scss.js
+  📄 sb-watch.js
+  📄 start-debug.js
+  📄 start.js
+📁 src
+  📁 assets
+    📄 favicon.ico
+    📁 img
+      📄 about-bg.jpg
+      📄 bg01.png
+      📁 clients
+        📄 client1.png
+        📄 client2.png
+        📄 client3.png
+        📄 client4.png
+      📄 contact-bg.jpg
+      📄 d.jpg
+      📁 Excel
+        📄 Excel.png
+      📄 favicon.svg
+      📄 header01-bg.jpg
+      📄 header01-bg.png
+      📄 home-bg.jpg
+      📁 logo
+        📄 logo.png
+        📄 Logo01.png
+        📄 Logo04.png
+        📄 Logo11.png
+        📄 Logo13.png
+        📄 Logo5.png
+        📄 Logo7.png
+        📄 Logo9.png
+      📄 post-bg.jpg
+      📄 post-sample-image.jpg
+      📁 ppoint
+        📄 ppoint.png
+      📁 profile
+        📄 client02.png
+        📄 didier.png
+        📄 flyppi.png
+        📄 izou.png
+        📄 profile01.png
+        📄 profile02.png
+        📄 profile03.png
+        📄 profile04.png
+        📄 profile05.png
+        📄 profile06.png
+        📄 profile07.png
+        📄 profile08.png
+        📄 Profileb.png
+        📄 shinto.png
+      📁 projets
+      📄 tutoriels-bg.jpg
+      📁 word
+        📄 alignement.png
+        📄 enregistrement.png
+        📄 export-pdf.png
+        📄 exporter-pdf.png
+        📄 impression.png
+        📄 insertion-image.png
+        📄 interface-word.png
+        📄 introduction.png
+        📄 lancer-word.png
+        📄 listes.png
+        📄 mise-en-forme.png
+        📄 mise-en-page.png
+        📄 ouvrir-doc01.png
+        📄 personnaliser-affichage.png
+        📄 saisie-texte.png
+        📄 tableaux.png
+        📄 word.png
+        📄 word01.png
+        📄 zones-ecran.png
+  📁 js
+    📄 pdf-generator.js
+    📄 scripts.js
+  📁 pug
+    📄 about.pug
+    📄 contact.pug
+    📁 includes
+      📄 css.pug
+      📄 footer.pug
+      📄 navbar.pug
+      📄 scripts.pug
+      📄 tutorial-footer.pug
+      📄 tutorial-header.pug
+    📄 index.pug
+    📄 layout.pug
+    📄 post.pug
+    📄 tuto-word.pug
+  📁 scss
+    📁 components
+      📄 _buttons.scss
+      📄 _cards.scss
+      📄 _forms.scss
+      📄 _navbar.scss
+    📁 sections
+      📄 _footer.scss
+      📄 _masthead.scss
+      📄 _post.scss
+    📄 styles.scss
+    📁 variables
+      📄 _buttons.scss
+      📄 _colors.scss
+      📄 _forms.scss
+      📄 _options.scss
+      📄 _overlay.scss
+      📄 _typography.scss
+    📄 _global.scss
+    📄 _variables.scss
+  📄 tuto-word.md
+📄 vercel.json

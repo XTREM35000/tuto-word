@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 
 // Configuration
 const rootDir = '.';
-const exclusions = ['node_modules', 'nhost', '.vscode', '.nuxt', '.output', '.git', '.bolt', '.next'];
+const exclusions = ['node_modules', 'dist', 'public', 'nhost', '.vscode', '.nuxt', '.output', '.git', '.bolt', '.next'];
 let outputFile = 'project_structure.txt';
 
 // Vérifier si le fichier existe déjà et l'incrémenter
