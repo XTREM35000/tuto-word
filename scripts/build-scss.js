@@ -14,7 +14,7 @@ const __dirname = path.dirname(__filename);
 // Configuration
 const srcDir = path.join(__dirname, '..', 'src');
 const distDir = path.join(__dirname, '..', 'dist');
-const nodeModules = 'node_modules';
+const nodeModules = path.join(__dirname, '..', 'node_modules');
 
 // Ensure the destination directory exists
 shell.mkdir('-p', distDir);
@@ -30,13 +30,18 @@ async function compileScssFile(srcFile, destFile) {
     try {
         const result = sass.compile(srcFile, {
             style: 'compressed',
-            sourceMap: true
+            sourceMap: true,
+            loadPaths: [
+                path.join(srcDir, 'scss'),
+                nodeModules,
+                path.join(nodeModules, 'bootstrap/scss')
+            ]
         });
 
         await fs.ensureDir(path.dirname(destFile));
-        await fs.writeFile(destFile, result.css);
+        await fs.writeFile(destFile, result.css.toString());
         if (result.sourceMap) {
-            await fs.writeFile(`${destFile}.map`, result.sourceMap);
+            await fs.writeFile(`${destFile}.map`, result.sourceMap.toString());
         }
         console.log(`✓ Compilé: ${srcFile} -> ${destFile}`);
     } catch (err) {
@@ -52,7 +57,7 @@ async function compileAllScssFiles() {
         const files = await fs.readdir(scssDir);
 
         for (const file of files) {
-            if (file.endsWith('.scss')) {
+            if (file.endsWith('.scss') && !file.startsWith('_')) {
                 const srcFile = path.join(scssDir, file);
                 const destFile = path.join(distDir, 'assets', 'css', file.replace('.scss', '.css'));
                 await compileScssFile(srcFile, destFile);

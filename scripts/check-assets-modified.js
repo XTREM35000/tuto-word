@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'fs-extra';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -19,7 +19,7 @@ function directoryExists(dir) {
 async function ensureDirectory(dir) {
     if (!directoryExists(dir)) {
         try {
-            await fs.mkdir(dir, { recursive: true });
+            await fs.ensureDir(dir);
             console.log(`✓ Répertoire créé: ${dir}`);
         } catch (err) {
             console.warn(`⚠️ Impossible de créer le répertoire ${dir}: ${err.message}`);
