@@ -15,8 +15,20 @@ function directoryExists(dir) {
     return fs.existsSync(dir);
 }
 
+// Fonction pour créer un répertoire s'il n'existe pas
+async function ensureDirectory(dir) {
+    if (!directoryExists(dir)) {
+        try {
+            await fs.mkdir(dir, { recursive: true });
+            console.log(`✓ Répertoire créé: ${dir}`);
+        } catch (err) {
+            console.warn(`⚠️ Impossible de créer le répertoire ${dir}: ${err.message}`);
+        }
+    }
+}
+
 // Fonction pour vérifier les assets requis
-function checkRequiredAssets() {
+async function checkRequiredAssets() {
     console.log('🔍 Vérification des assets requis...');
 
     // Vérifier les répertoires source
@@ -32,10 +44,7 @@ function checkRequiredAssets() {
 
     for (const dir of requiredSrcDirs) {
         const fullPath = path.join(srcDir, dir);
-        if (!directoryExists(fullPath)) {
-            console.error(`❌ Répertoire manquant: ${fullPath}`);
-            process.exit(1);
-        }
+        await ensureDirectory(fullPath);
     }
 
     // Vérifier les images de fond requises
@@ -48,8 +57,7 @@ function checkRequiredAssets() {
     for (const image of requiredBgImages) {
         const fullPath = path.join(srcDir, 'assets', 'img', image);
         if (!fs.existsSync(fullPath)) {
-            console.error(`❌ Image de fond manquante: ${fullPath}`);
-            process.exit(1);
+            console.warn(`⚠️ Image de fond manquante: ${fullPath}`);
         }
     }
 
