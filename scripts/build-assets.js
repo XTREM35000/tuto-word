@@ -1,150 +1,129 @@
 'use strict';
 
-const fs = require('fs-extra');
-const path = require('path');
-const shell = require('shelljs');
+import fs from 'fs-extra';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import shell from 'shelljs';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Configuration
 const publicDir = 'public';
 const srcDir = 'src';
 const distDir = 'dist';
 
-// Function to normalize case
+// Fonction pour normaliser la casse des noms de fichiers
 function normalizeCase(filePath) {
     const parts = filePath.split(path.sep);
     return parts.map(part => part.toLowerCase()).join(path.sep);
 }
 
-// Function to ensure directory exists
-function ensureDirectoryExists(filePath) {
-    const dirname = path.dirname(filePath);
-    if (fs.existsSync(dirname)) {
-        return true;
-    }
-    ensureDirectoryExists(dirname);
-    fs.mkdirSync(dirname);
-}
-
-// Function to copy and normalize case
+// Fonction pour copier et normaliser la casse
 async function copyAndNormalize(src, dest) {
-    if (fs.existsSync(src)) {
+    if (await fs.pathExists(src)) {
         const normalizedDest = normalizeCase(dest);
         await fs.copy(src, normalizedDest);
         console.log(`Copied and normalized: ${src} -> ${normalizedDest}`);
     }
 }
 
-// Function to copy background images to all necessary directories
-async function copyBackgroundImages() {
-    const bgImages = ['home-bg.jpg', 'tutoriels-bg.jpg', 'about-bg.jpg', 'contact-bg.jpg', 'post-bg.jpg'];
+// Fonction pour s'assurer qu'un répertoire existe
+async function ensureDir(dir) {
+    await fs.ensureDir(dir);
+    console.log(`✓ Directory ensured: ${dir}`);
+}
 
-    // Ensure img directories exist with normalized case
-    const dirs = [
-        path.join(publicDir, 'assets', 'img'),
-        path.join(distDir, 'assets', 'img'),
-        path.join(distDir, 'assets', 'img', 'word'),
-        path.join(distDir, 'assets', 'img', 'excel'),
-        path.join(distDir, 'assets', 'img', 'ppoint'),
-        path.join(distDir, 'assets', 'img', 'profile'),
-        path.join(distDir, 'assets', 'img', 'bg')
+// Fonction pour copier les images de fond
+async function copyBackgroundImages() {
+    const srcDir = path.join(__dirname, '..', 'src', 'assets', 'img');
+    const publicDir = path.join(__dirname, '..', 'public', 'assets', 'img');
+    const distDir = path.join(__dirname, '..', 'dist', 'assets', 'img');
+
+    // Vérifier si le répertoire source existe
+    if (!await fs.pathExists(srcDir)) {
+        console.log('⚠️ Le répertoire source des images n\'existe pas');
+        return;
+    }
+
+    // Créer les répertoires nécessaires
+    await ensureDir(publicDir);
+    await ensureDir(distDir);
+
+    // Copier les images de fond
+    const bgImages = [
+        { src: 'home-bg.jpg', dest: 'word' },
+        { src: 'about-bg.jpg', dest: 'bg' },
+        { src: 'contact-bg.jpg', dest: 'bg' }
     ];
 
-    for (const dir of dirs) {
-        await fs.ensureDir(normalizeCase(dir));
-    }
+    for (const img of bgImages) {
+        const srcPath = path.join(srcDir, img.src);
+        if (await fs.pathExists(srcPath)) {
+            const publicDest = path.join(publicDir, img.dest, img.src.toLowerCase());
+            const distDest = path.join(distDir, img.dest, img.src.toLowerCase());
 
-    // Copy all images from src/assets/img to public and dist
-    if (fs.existsSync(path.join(srcDir, 'assets', 'img'))) {
-        const srcImgDir = path.join(srcDir, 'assets', 'img');
-        const destImgDir = path.join(distDir, 'assets', 'img');
-        const publicImgDir = path.join(publicDir, 'assets', 'img');
+            await ensureDir(path.dirname(publicDest));
+            await ensureDir(path.dirname(distDest));
 
-        // Copy all files recursively
-        const copyRecursive = async (src, dest) => {
-            const files = await fs.readdir(src, { withFileTypes: true });
-            for (const file of files) {
-                const srcPath = path.join(src, file.name);
-                const destPath = path.join(dest, file.name.toLowerCase());
-
-                if (file.isDirectory()) {
-                    await fs.ensureDir(destPath);
-                    await copyRecursive(srcPath, destPath);
-                } else {
-                    await fs.copy(srcPath, destPath);
-                }
-            }
-        };
-
-        await copyRecursive(srcImgDir, destImgDir);
-        await copyRecursive(srcImgDir, publicImgDir);
-    }
-
-    // Copy specific background images
-    for (const image of bgImages) {
-        const srcPath = path.join(srcDir, 'assets', 'img', image);
-        if (fs.existsSync(srcPath)) {
-            await copyAndNormalize(
-                srcPath,
-                path.join(publicDir, 'assets', 'img', image)
-            );
-            await copyAndNormalize(
-                srcPath,
-                path.join(distDir, 'assets', 'img', image)
-            );
-            // Also copy header-bg.jpg to word directory
-            if (image === 'home-bg.jpg') {
-                await copyAndNormalize(
-                    srcPath,
-                    path.join(distDir, 'assets', 'img', 'word', image)
-                );
-            }
+            await fs.copy(srcPath, publicDest);
+            await fs.copy(srcPath, distDest);
+            console.log(`✓ Image copiée: ${img.src}`);
         }
     }
 }
 
-// Clean dist directory
-console.log('Cleaning dist directory...');
-shell.rm('-rf', path.join(distDir, '*'));
+// Fonction pour copier les assets
+async function copyAssets() {
+    const srcDir = path.join(__dirname, '..', 'src', 'assets');
+    const publicDir = path.join(__dirname, '..', 'public', 'assets');
+    const distDir = path.join(__dirname, '..', 'dist', 'assets');
 
-// Copy all assets from src to dist
-console.log('Copying assets from src to dist...');
-if (fs.existsSync(path.join(srcDir, 'assets'))) {
-    await fs.ensureDir(path.join(distDir, 'assets'));
-    await copyAndNormalize(
-        path.join(srcDir, 'assets'),
-        path.join(distDir, 'assets')
-    );
+    // Copier les assets de src vers public et dist
+    if (await fs.pathExists(srcDir)) {
+        await copyAndNormalize(srcDir, publicDir);
+        await copyAndNormalize(srcDir, distDir);
+        console.log('✓ Assets copiés vers public et dist');
+    } else {
+        console.log('⚠️ Le dossier src/assets n\'existe pas');
+    }
 }
 
-// Copy all assets from public to dist (overwriting if necessary)
-console.log('Copying assets from public to dist...');
-if (fs.existsSync(path.join(publicDir, 'assets'))) {
-    await fs.ensureDir(path.join(distDir, 'assets'));
-    await copyAndNormalize(
-        path.join(publicDir, 'assets'),
-        path.join(distDir, 'assets')
-    );
+// Fonction principale
+async function buildAssets() {
+    try {
+        console.log('🚀 Début de la construction des assets...');
+
+        // Créer les répertoires nécessaires
+        const dirs = [
+            'dist/assets/img/excel',
+            'dist/assets/img/ppoint',
+            'dist/assets/img/profile',
+            'dist/assets/img/bg',
+            'dist/assets/img/word',
+            'public/assets/img/excel',
+            'public/assets/img/ppoint',
+            'public/assets/img/profile',
+            'public/assets/img/bg',
+            'public/assets/img/word'
+        ];
+
+        for (const dir of dirs) {
+            await ensureDir(path.join(__dirname, '..', dir));
+        }
+
+        // Copier les images de fond
+        await copyBackgroundImages();
+
+        // Copier les assets
+        await copyAssets();
+
+        console.log('✅ Construction des assets terminée avec succès!');
+    } catch (err) {
+        console.error('❌ Erreur lors de la construction des assets:', err);
+        process.exit(1);
+    }
 }
 
-// Ensure critical directories exist
-const criticalDirs = ['css', 'js', 'img', 'fonts'].map(dir => path.join(distDir, 'assets', dir));
-for (const dir of criticalDirs) {
-    await fs.ensureDir(normalizeCase(dir));
-}
-
-// Copy background images to all necessary locations
-console.log('Copying background images...');
-copyBackgroundImages();
-
-// Copy other public files (HTML, etc.)
-const publicFiles = fs.readdirSync(publicDir)
-    .filter(file => fs.statSync(path.join(publicDir, file)).isFile());
-
-for (const file of publicFiles) {
-    await copyAndNormalize(
-        path.join(publicDir, file),
-        path.join(distDir, file)
-    );
-}
-
-console.log('Assets copied successfully!');
+// Exécuter la fonction principale
+buildAssets();

@@ -3,6 +3,7 @@
   "name": "Formation-Office",
   "version": "6.0.9",
   "description": "Blog de tutoriels Word et autres outils bureautiques",
+  "type": "module",
   "scripts": {
     "start": "npm run dev",
     "clean": "rimraf dist public",
