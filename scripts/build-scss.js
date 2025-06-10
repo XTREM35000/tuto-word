@@ -17,12 +17,12 @@ const distDir = path.join(__dirname, '..', 'dist');
 const nodeModules = path.join(__dirname, '..', 'node_modules');
 
 // Ensure the destination directory exists
-shell.mkdir('-p', distDir);
+shell.mkdir('-p', path.join(distDir, 'assets', 'css'));
 
 // Copy Bootstrap CSS from node_modules
 shell.cp(
     path.join(nodeModules, 'bootstrap/dist/css/bootstrap.min.css'),
-    path.join(distDir, 'bootstrap.min.css')
+    path.join(distDir, 'assets', 'css', 'bootstrap.min.css')
 );
 
 // Fonction pour compiler un fichier SCSS
