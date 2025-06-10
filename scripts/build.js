@@ -1,7 +1,8 @@
 const fs = require('fs-extra');
 const path = require('path');
+const shell = require('shelljs');
 
-async function copyAssets() {
+async function build() {
     try {
         const distDir = 'dist';
         const srcAssetsDir = path.join('src', 'assets');
@@ -28,16 +29,31 @@ async function copyAssets() {
             }
         });
 
+        // Ensure all necessary directories exist
+        const requiredDirs = [
+            path.join(distAssetsDir, 'img'),
+            path.join(distAssetsDir, 'img', 'word'),
+            path.join(distAssetsDir, 'img', 'excel'),
+            path.join(distAssetsDir, 'img', 'ppoint'),
+            path.join(distAssetsDir, 'img', 'profile'),
+            path.join(distAssetsDir, 'img', 'bg')
+        ];
+
+        for (const dir of requiredDirs) {
+            await fs.ensureDir(dir);
+            console.log(`Ensured directory exists: ${dir}`);
+        }
+
         // List contents of dist/assets to verify
         const files = await fs.readdir(distAssetsDir, { recursive: true });
         console.log('\nContents of dist/assets:');
         console.log(files.join('\n'));
 
-        console.log('\nAssets copied successfully!');
+        console.log('\nBuild completed successfully!');
     } catch (err) {
-        console.error('Error copying assets:', err);
+        console.error('Error during build:', err);
         process.exit(1);
     }
 }
 
-copyAssets();
+build();

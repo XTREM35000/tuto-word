@@ -12,7 +12,7 @@
     "build:pug": "node scripts/build-pug.js",
     "build:scss": "node scripts/build-scss.js",
     "build": "npm run verify:assets && npm run prebuild && concurrently -n \"ASSETS,PUG,SCSS\" -c \"bgBlue.bold,bgGreen.bold,bgMagenta.bold\" \"npm run build:assets\" \"npm run build:pug\" \"npm run build:scss\" && node scripts/build.js",
-    "postbuild": "shx mkdir -p public && shx cp -R dist/* public/ && shx cp -R src/assets public/ 2>/dev/null || echo \"Assets copy skipped\"",
+    "postbuild": "node scripts/post-build.js",
     "dev": "npm run build && live-server public --port=3000 --open=/",
     "vercel-build": "npm run build"
   },

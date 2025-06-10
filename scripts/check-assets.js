@@ -13,10 +13,6 @@ const assetConfig = {
     ],
     optional: [
         'assets/img/excel',
-        'assets/img/ppoint',
-        'assets/img/projets',
-        'assets/img/logo',
-        'assets/img/clients'
     ]
 };
 
