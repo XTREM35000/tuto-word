@@ -7,6 +7,15 @@ function normalizeCase(filePath) {
     return parts.map(part => part.toLowerCase()).join(path.sep);
 }
 
+// Fonction pour copier et normaliser la casse
+async function copyAndNormalize(src, dest) {
+    if (await fs.pathExists(src)) {
+        const normalizedDest = normalizeCase(dest);
+        await fs.copy(src, normalizedDest);
+        console.log(`Copied and normalized: ${src} -> ${normalizedDest}`);
+    }
+}
+
 async function postBuild() {
     try {
         // Ensure public directory exists
@@ -15,7 +24,23 @@ async function postBuild() {
 
         // Copy dist contents to public
         if (await fs.pathExists('dist')) {
-            await fs.copy('dist', 'public', { overwrite: true });
+            // Copy all files recursively with normalized case
+            const copyRecursive = async (src, dest) => {
+                const files = await fs.readdir(src, { withFileTypes: true });
+                for (const file of files) {
+                    const srcPath = path.join(src, file.name);
+                    const destPath = path.join(dest, file.name.toLowerCase());
+
+                    if (file.isDirectory()) {
+                        await fs.ensureDir(destPath);
+                        await copyRecursive(srcPath, destPath);
+                    } else {
+                        await fs.copy(srcPath, destPath);
+                    }
+                }
+            };
+
+            await copyRecursive('dist', 'public');
             console.log('✓ Contenu de dist copié vers public');
         } else {
             console.log('⚠️ Le dossier dist n\'existe pas');
@@ -23,32 +48,14 @@ async function postBuild() {
 
         // Copy assets from src to public
         if (await fs.pathExists(path.join('src', 'assets'))) {
-            await fs.copy(path.join('src', 'assets'), path.join('public', 'assets'), { overwrite: true });
+            await copyAndNormalize(
+                path.join('src', 'assets'),
+                path.join('public', 'assets')
+            );
             console.log('✓ Assets copiés vers public/assets');
         } else {
             console.log('⚠️ Le dossier src/assets n\'existe pas');
         }
-
-        // Normaliser la casse des noms de fichiers dans public
-        const normalizeFiles = async (dir) => {
-            const files = await fs.readdir(dir, { withFileTypes: true });
-            for (const file of files) {
-                const oldPath = path.join(dir, file.name);
-                const newPath = path.join(dir, file.name.toLowerCase());
-
-                if (oldPath !== newPath) {
-                    if (file.isDirectory()) {
-                        await normalizeFiles(oldPath);
-                        await fs.rename(oldPath, newPath);
-                    } else {
-                        await fs.rename(oldPath, newPath);
-                    }
-                }
-            }
-        };
-
-        // Normaliser la casse dans le dossier public
-        await normalizeFiles('public');
 
         console.log('Post-build completed successfully!');
     } catch (err) {
